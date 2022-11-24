@@ -1,9 +1,10 @@
 .header.ant-layout-header {
 	background-color: var(--color-primary);
-	position: sticky;
-	top: 0;
 	z-index: 1;
 	width: "100%";
+	font-size: 32px;
+	justify-content: center;
+	text-align: center;
 }
 
 .footer.ant-layout-footer {

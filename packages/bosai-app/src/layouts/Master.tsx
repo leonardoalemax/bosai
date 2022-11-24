@@ -7,32 +7,30 @@ import "./Master.css";
 
 function Master() {
 	return (
-		<ConfigProvider
-			componentSize={"large"}
-			theme={{
-				algorithm: theme.darkAlgorithm,
-				token: {
-					colorPrimary: "#FFCA05",
-					colorBgBase: "#221e1e",
-					borderRadius: 8,
-				},
-			}}>
-			<Layout>
-				<Header className='header'>App de Coleção de Jogos</Header>
-				<Content className='content'>
-					<Breadcrumb>
-						<Breadcrumb.Item>Home</Breadcrumb.Item>
-						<Breadcrumb.Item>Search</Breadcrumb.Item>
-					</Breadcrumb>
+		<Layout>
+			<Header className='header'>Bōsai</Header>
+			<Content className='content'>
+				<Breadcrumb>
+					<Breadcrumb.Item>Home</Breadcrumb.Item>
+					<Breadcrumb.Item>Collection</Breadcrumb.Item>
+				</Breadcrumb>
+				<ConfigProvider
+					componentSize={"large"}
+					theme={{
+						algorithm: theme.darkAlgorithm,
+						token: {
+							colorPrimary: "#FFCA05",
+							colorBgBase: "#221e1e",
+							borderRadius: 8,
+						},
+					}}>
 					<div className='page'>
 						<Outlet />
 					</div>
-				</Content>
-				<Footer className='footer'>
-					Ant Design ©2018 Created by Ant UED
-				</Footer>
-			</Layout>
-		</ConfigProvider>
+				</ConfigProvider>
+			</Content>
+			<Footer className='footer'>Bōsai ©2022 Created by Alemax</Footer>
+		</Layout>
 	);
 }
 

@@ -1,7 +1,6 @@
 TODO
 
 -   Adicionar metadata da aplicação nos jogos
--   Deletar um jogo da lista
 -   Editar um jogo da lista
 
 Pesquisa de mercado?
