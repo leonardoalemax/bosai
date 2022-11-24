@@ -1,0 +1,18 @@
+.games-list {
+	display: flex;
+	margin-top: 16px;
+}
+
+.filter {
+	margin-top: 16px;
+}
+
+.games-list.list {
+	flex-direction: column;
+}
+
+.games-list.cards {
+	flex-direction: row;
+	gap: 16px;
+	flex-wrap: wrap;
+}

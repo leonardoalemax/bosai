@@ -1,0 +1,12 @@
+{
+	"name": "bosai",
+	"private": true,
+	"version": "1.0.0",
+	"description": "bosai is a gamer agenda",
+	"main": "index.js",
+	"author": "Leonardo 'Alemax' Ferreira",
+	"license": "MIT",
+	"workspaces": [
+		"packages/*"
+	]
+}

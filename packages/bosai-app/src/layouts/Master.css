@@ -1,0 +1,31 @@
+.header.ant-layout-header {
+	background-color: var(--color-primary);
+	position: sticky;
+	top: 0;
+	z-index: 1;
+	width: "100%";
+}
+
+.footer.ant-layout-footer {
+	background-color: var(--color-primary);
+	text-align: center;
+}
+
+.ant-layout {
+	background-color: var(--color-primary);
+}
+
+.content.ant-layout-content {
+	display: block;
+	height: 100%;
+	width: 100%;
+	max-width: 1080px;
+	margin: 16px auto;
+}
+
+.page {
+	background-color: var(--color-background);
+	padding: 32px;
+	border-radius: 8px;
+	margin: 16px 0;
+}
