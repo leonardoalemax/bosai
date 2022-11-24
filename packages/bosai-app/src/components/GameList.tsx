@@ -1,12 +1,14 @@
-import { Segmented, List } from "antd";
-import { useState } from "react";
-import { IGame } from "../interfaces/game";
+import { Segmented } from "antd";
+import { useContext, useState } from "react";
+
 import GameRow from "./GameRow";
 import GameCard from "./GameCard";
 
 import "./GameList.css";
+import CollectionContext from "../context/CollectionContext";
 
-function GameList({ list }: { list: IGame[] }) {
+function GameList() {
+	const { collection } = useContext(CollectionContext);
 	const [state, setState] = useState("cards");
 
 	return (
@@ -25,8 +27,8 @@ function GameList({ list }: { list: IGame[] }) {
 				/>
 			</div>
 			<div className={`games-list ${state}`}>
-				{list &&
-					list.map((game: any) =>
+				{collection &&
+					collection.map((game: any) =>
 						state === "list" ? (
 							<GameRow game={game} key={game.slug}></GameRow>
 						) : (

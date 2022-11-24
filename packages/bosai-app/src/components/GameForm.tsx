@@ -1,15 +1,17 @@
 import { Button, Divider } from "antd";
 
-import { IGame } from "../interfaces/game";
 import GameSearch from "./GameSearch";
 
 import "./GameForm.css";
 import GameContext from "../context/GameContext";
 import useGameContext from "../hook/useGameContext";
 import GameDisplay from "./GameDisplay";
+import CollectionContext from "../context/CollectionContext";
+import { useContext } from "react";
 
-function GameForm({ onChange }: { onChange: (e: IGame) => void }) {
+function GameForm() {
 	const gameContext = useGameContext();
+	const { addGame } = useContext(CollectionContext);
 
 	return (
 		<div className='games-form'>
@@ -20,7 +22,9 @@ function GameForm({ onChange }: { onChange: (e: IGame) => void }) {
 				<Divider />
 				<Button
 					onClick={() => {
-						gameContext.game && onChange(gameContext.game);
+						gameContext.game &&
+							addGame &&
+							addGame(gameContext.game);
 					}}>
 					{" "}
 					Add Game{" "}

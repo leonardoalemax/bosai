@@ -1,8 +1,5 @@
 TODO
 
--   Criar contexto api dos IGame
--   Criar contexto api dos Lista IGame no LocalStorage
--   Criar hook de manipulação da lista de jogos no contexto
 -   Adicionar metadata da aplicação nos jogos
 -   Deletar um jogo da lista
 -   Editar um jogo da lista

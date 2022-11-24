@@ -1,35 +1,19 @@
-import { Button } from "antd";
-import { useEffect, useState } from "react";
-import { useLocalStorage } from "react-use";
-
 import GameForm from "../components/GameForm";
 import GameList from "../components/GameList";
-import { IGame } from "../interfaces/game";
+import CollectionContext from "../context/CollectionContext";
+import useCollectionContext from "../hook/useCollectionContext";
 
 import "./Collection.css";
 
 function Collection() {
-	const [value, setValue] = useLocalStorage<{ list: IGame[] }>("collection", {
-		list: [],
-	});
-
-	const [list, updateList] = useState<IGame[] | undefined>(value?.list);
-
-	useEffect(() => {
-		list && setValue((value) => ({ ...value, list }));
-	}, [list]);
+	const collectionContext = useCollectionContext();
 
 	return (
 		<div className='App'>
-			<GameForm
-				onChange={(e) => {
-					updateList((v) => {
-						if (v) return [...v, e];
-					});
-				}}
-			/>
-
-			{list && list?.length > 0 && <GameList list={list} />}
+			<CollectionContext.Provider value={collectionContext}>
+				<GameForm />
+				<GameList />
+			</CollectionContext.Provider>
 		</div>
 	);
 }
