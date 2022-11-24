@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Select, Divider, Tag, Image } from "antd";
+import { Select, Divider, Tag, Image, Empty } from "antd";
 
 import "./GameDisplay.css";
 import GameContext from "../context/GameContext";
@@ -7,7 +7,7 @@ import GameContext from "../context/GameContext";
 function GameDisplay() {
 	const { game } = useContext(GameContext);
 
-	return (
+	return game ? (
 		<div className='game-display'>
 			<Image width={200} src={game?.cover} />
 			<div className='game-meta'>
@@ -41,21 +41,10 @@ function GameDisplay() {
 							</>
 						))}
 				</div>
-				<Divider />
-				<Select
-					style={{ width: 120 }}
-					defaultValue='Platform'
-					options={
-						game?.platforms
-							? game.platforms.map((e) => ({
-									label: e,
-									value: e,
-							  }))
-							: []
-					}
-				/>
 			</div>
 		</div>
+	) : (
+		<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
 	);
 }
 

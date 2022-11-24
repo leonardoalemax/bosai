@@ -21,6 +21,8 @@ function GameForm() {
 				<GameDisplay />
 				<Divider />
 				<Button
+					type='primary'
+					disabled={!gameContext.game}
 					onClick={() => {
 						gameContext.game &&
 							addGame &&
@@ -29,6 +31,7 @@ function GameForm() {
 					{" "}
 					Add Game{" "}
 				</Button>
+				<Divider />
 			</GameContext.Provider>
 		</div>
 	);

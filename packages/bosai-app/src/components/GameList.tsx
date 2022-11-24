@@ -1,4 +1,4 @@
-import { Segmented } from "antd";
+import { Empty, Segmented } from "antd";
 import { useContext, useState } from "react";
 
 import GameRow from "./GameRow";
@@ -26,16 +26,22 @@ function GameList() {
 					}}
 				/>
 			</div>
-			<div className={`games-list ${state}`}>
-				{collection &&
-					collection.map((game: any) =>
-						state === "list" ? (
-							<GameRow game={game} key={game.slug}></GameRow>
-						) : (
-							<GameCard game={game} key={game.slug}></GameCard>
-						)
-					)}
-			</div>
+			{collection.length > 0 ? (
+				<div className={`games-list ${state}`}>
+					{collection &&
+						collection.map((game: any) =>
+							state === "list" ? (
+								<GameRow game={game} key={game.slug}></GameRow>
+							) : (
+								<GameCard
+									game={game}
+									key={game.slug}></GameCard>
+							)
+						)}
+				</div>
+			) : (
+				<Empty />
+			)}
 		</div>
 	);
 }
