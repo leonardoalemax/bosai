@@ -1,10 +1,12 @@
 import { Select, Spin } from "antd";
-import { useRef, useMemo, useState } from "react";
+import { useRef, useMemo, useState, useContext } from "react";
 import debounce from "lodash/debounce";
 
 import { IGame } from "../interfaces/game";
+import GameContext from "../context/GameContext";
 
-function GameSearch({ onChange }: { onChange: (e: IGame) => void }) {
+function GameSearch() {
+	const { updateGame } = useContext(GameContext);
 	const [options, setOptions] =
 		useState<{ label: string; value: string }[]>();
 	const [games, updateGames] = useState<IGame[]>();
@@ -55,7 +57,7 @@ function GameSearch({ onChange }: { onChange: (e: IGame) => void }) {
 			onSearch={debounceFetcher}
 			onChange={(e) => {
 				const changedGame = games?.filter((g) => g.slug === e.value)[0];
-				changedGame && onChange(changedGame);
+				changedGame && updateGame && updateGame(changedGame);
 			}}
 			notFoundContent={fetching ? <Spin size='small' /> : null}
 			options={options}
