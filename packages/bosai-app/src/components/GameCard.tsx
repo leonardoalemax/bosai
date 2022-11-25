@@ -22,7 +22,7 @@ function GameCard({ game }: { game: IGame }) {
 			]}>
 			<Meta
 				title={game?.title}
-				description={game?.platforms?.join("|")}
+				description={game?.developers?.join("|")}
 			/>
 		</Card>
 	);

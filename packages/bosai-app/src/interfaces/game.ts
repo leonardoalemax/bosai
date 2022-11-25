@@ -8,6 +8,9 @@ export interface IGame {
 		name: string;
 		slug: string;
 	};
+	consoles: string[];
+	developers: string[];
+	distributor: string;
 	involved_companies: {
 		company: {
 			name: string;

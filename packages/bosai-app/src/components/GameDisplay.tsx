@@ -22,18 +22,18 @@ function GameDisplay() {
 						))}
 				</div>
 				<div className='game-meta-row'>
-					<label>platforms:</label>
-					{game?.platforms &&
-						game?.platforms.map((name: string) => (
+					<label>consoles:</label>
+					{game?.consoles &&
+						game?.consoles.map((name: string) => (
 							<Tag color='green' key={name}>
 								{name}
 							</Tag>
 						))}
 				</div>
 				<div className='game-meta-row'>
-					<label>companies:</label>
-					{game?.involved_companies &&
-						game?.involved_companies.map(({ company }: any) => (
+					<label>developers:</label>
+					{game?.developers &&
+						game?.developers.map(({ company }: any) => (
 							<>
 								<Tag color='blue' key={company.name}>
 									{company.name}

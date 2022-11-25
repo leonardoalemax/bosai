@@ -1,5 +1,9 @@
 TODO
 
+-   adicionar data ao viewer de jogo
+-   Adicionar component de consoles
+-   reorganizar dados de empresas nos jogos
+-   adicionar component de empresas
 -   Adicionar metadata da aplicação nos jogos
 -   Editar um jogo da lista
 
