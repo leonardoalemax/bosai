@@ -1,27 +1,24 @@
 import { List, Avatar } from "antd";
-import { IGame } from "../interfaces/game";
 import "./GameRow.css";
-import { DeleteOutlined } from "@ant-design/icons";
 import { useContext } from "react";
-import CollectionContext from "../context/CollectionContext";
+import GameContext from "../context/GameContext";
+import GameTags from "./GameTags";
+import GameDeleteButton from "./GameDeleteButton";
+import GameSelectButton from "./GameSelectButton";
 
 const { Item } = List;
 
-function GameRow({ game }: { game: IGame }) {
-	const { removeGame } = useContext(CollectionContext);
+function GameRow() {
+	const { game } = useContext(GameContext);
 
 	return (
-		<Item
-			actions={[
-				<DeleteOutlined
-					key='trash'
-					onClick={() => removeGame && removeGame(game.slug)}
-				/>,
-			]}>
+		<Item actions={[<GameDeleteButton />, <GameSelectButton />]}>
 			<Item.Meta
 				avatar={<Avatar shape='square' size={64} src={game?.cover} />}
 				title={game?.title}
-				description={game?.platforms?.join("|")}
+				description={
+					<GameTags prop='consoles' type='user' color='green' />
+				}
 			/>
 		</Item>
 	);

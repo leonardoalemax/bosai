@@ -1,4 +1,4 @@
-.game-display {
+.game-display-header {
 	display: flex;
 	flex-direction: row;
 	align-items: flex-start;
