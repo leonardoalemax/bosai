@@ -1,9 +1,0 @@
-.results {
-	margin-top: 10px;
-	overflow-y: scroll;
-	overflow-x: hidden;
-	display: flex;
-	flex-direction: row;
-	gap: 16px;
-	flex-wrap: wrap;
-}

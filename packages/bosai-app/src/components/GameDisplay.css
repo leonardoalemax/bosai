@@ -1,3 +1,7 @@
+.game-display {
+	width: 100%;
+}
+
 .game-display-header {
 	display: flex;
 	flex-direction: row;

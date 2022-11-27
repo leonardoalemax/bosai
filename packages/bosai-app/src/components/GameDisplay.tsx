@@ -41,7 +41,6 @@ function GameDisplay() {
 					<Divider />
 					<GameAddToCollection />
 					<Divider />
-
 					<GameActions
 						prop='consoles'
 						action={(g: IGame, item: string) => {

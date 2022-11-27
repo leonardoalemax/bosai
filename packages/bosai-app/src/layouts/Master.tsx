@@ -1,4 +1,5 @@
-import { Layout, Breadcrumb, ConfigProvider, theme } from "antd";
+import { Layout, ConfigProvider, theme } from "antd";
+import { CSSProperties } from "react";
 import { Outlet } from "react-router-dom";
 
 const { Header, Content, Footer } = Layout;
@@ -6,30 +7,33 @@ const { Header, Content, Footer } = Layout;
 import "./Master.css";
 
 function Master() {
+	const colorPrimary = "#FFCA05";
+
+	const layoutStyle: CSSProperties = {
+		backgroundColor: colorPrimary,
+	};
+
 	return (
-		<Layout>
-			<Header className='header'>Bōsai</Header>
-			<Content className='content'>
-				<Breadcrumb>
-					<Breadcrumb.Item>Home</Breadcrumb.Item>
-					<Breadcrumb.Item>Collection</Breadcrumb.Item>
-				</Breadcrumb>
+		<Layout style={layoutStyle}>
+			<Header className='header' style={layoutStyle}>
+				Bōsai
+			</Header>
+			<Content className='content' style={layoutStyle}>
 				<ConfigProvider
 					componentSize={"large"}
 					theme={{
-						algorithm: theme.darkAlgorithm,
+						algorithm: theme.defaultAlgorithm,
 						token: {
-							colorPrimary: "#FFCA05",
-							colorBgBase: "#221e1e",
+							colorPrimary,
 							borderRadius: 8,
 						},
 					}}>
-					<div className='page'>
-						<Outlet />
-					</div>
+					<Outlet />
 				</ConfigProvider>
 			</Content>
-			<Footer className='footer'>Bōsai ©2022 Created by Alemax</Footer>
+			<Footer className='footer' style={layoutStyle}>
+				Bōsai ©2022 Created by Alemax
+			</Footer>
 		</Layout>
 	);
 }

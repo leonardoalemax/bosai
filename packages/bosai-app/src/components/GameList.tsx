@@ -1,4 +1,4 @@
-import { Empty, Segmented } from "antd";
+import { Divider, Empty, Segmented, Typography } from "antd";
 import { useContext, useState } from "react";
 
 import GameRow from "./GameRow";
@@ -8,15 +8,19 @@ import "./GameList.css";
 import CollectionContext from "../context/CollectionContext";
 import GameContext from "../context/GameContext";
 
+const { Title } = Typography;
+
 function GameList() {
 	const { collection } = useContext(CollectionContext);
-	const [state, setState] = useState("cards");
+	const [state, setState] = useState("list");
 
 	return (
 		<div className='game-list'>
+			<Title level={5}>Game Collection:</Title>
+			<Divider />
 			<div className='filter'>
 				<Segmented
-					options={["Cards", "List"]}
+					options={["List", "Cards"]}
 					onChange={(e) => {
 						setState(
 							{
@@ -27,6 +31,7 @@ function GameList() {
 					}}
 				/>
 			</div>
+			<Divider />
 			{collection.length > 0 ? (
 				<div className={`games-list ${state}`}>
 					{collection &&

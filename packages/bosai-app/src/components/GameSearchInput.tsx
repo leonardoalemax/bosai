@@ -1,6 +1,8 @@
-import { Select, Spin } from "antd";
+import { Typography, Select, Spin } from "antd";
 import { useRef, useMemo, useState, useContext } from "react";
 import debounce from "lodash/debounce";
+
+const { Title } = Typography;
 
 import { IGame } from "../interfaces/game";
 import GameDisplayContext from "../context/GameDisplayContext";
@@ -49,19 +51,24 @@ function GameSearchInput() {
 	}, []);
 
 	return (
-		<Select
-			showSearch
-			style={{ width: "100%" }}
-			labelInValue
-			filterOption={false}
-			onSearch={debounceFetcher}
-			onChange={(e) => {
-				const changedGame = games?.filter((g) => g.slug === e.value)[0];
-				changedGame && updateGame && updateGame(changedGame);
-			}}
-			notFoundContent={fetching ? <Spin size='small' /> : null}
-			options={options}
-		/>
+		<div>
+			<Title level={5}>Search game in IGDB®:</Title>
+			<Select
+				showSearch
+				style={{ width: "100%" }}
+				labelInValue
+				filterOption={false}
+				onSearch={debounceFetcher}
+				onChange={(e) => {
+					const changedGame = games?.filter(
+						(g) => g.slug === e.value
+					)[0];
+					changedGame && updateGame && updateGame(changedGame);
+				}}
+				notFoundContent={fetching ? <Spin size='small' /> : null}
+				options={options}
+			/>
+		</div>
 	);
 }
 
