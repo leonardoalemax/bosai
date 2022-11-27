@@ -3,10 +3,10 @@ import { useRef, useMemo, useState, useContext } from "react";
 import debounce from "lodash/debounce";
 
 import { IGame } from "../interfaces/game";
-import GameContext from "../context/GameContext";
+import GameDisplayContext from "../context/GameDisplayContext";
 
-function GameSearch() {
-	const { updateGame } = useContext(GameContext);
+function GameSearchInput() {
+	const { updateGame } = useContext(GameDisplayContext);
 	const [options, setOptions] =
 		useState<{ label: string; value: string }[]>();
 	const [games, updateGames] = useState<IGame[]>();
@@ -65,4 +65,4 @@ function GameSearch() {
 	);
 }
 
-export default GameSearch;
+export default GameSearchInput;

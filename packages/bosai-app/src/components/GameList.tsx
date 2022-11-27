@@ -6,6 +6,7 @@ import GameCard from "./GameCard";
 
 import "./GameList.css";
 import CollectionContext from "../context/CollectionContext";
+import GameContext from "../context/GameContext";
 
 function GameList() {
 	const { collection } = useContext(CollectionContext);
@@ -29,15 +30,19 @@ function GameList() {
 			{collection.length > 0 ? (
 				<div className={`games-list ${state}`}>
 					{collection &&
-						collection.map((game: any) =>
-							state === "list" ? (
-								<GameRow game={game} key={game.slug}></GameRow>
-							) : (
-								<GameCard
-									game={game}
-									key={game.slug}></GameCard>
-							)
-						)}
+						collection.map((game: any) => (
+							<GameContext.Provider
+								value={{ game: game }}
+								key={game.slug}>
+								<>
+									{state === "list" ? (
+										<GameRow />
+									) : (
+										<GameCard />
+									)}
+								</>
+							</GameContext.Provider>
+						))}
 				</div>
 			) : (
 				<Empty />

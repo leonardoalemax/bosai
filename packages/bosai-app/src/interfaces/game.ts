@@ -1,3 +1,5 @@
+import { IGameUserData } from "./gameUserData";
+
 export interface IGame {
 	title: string;
 	slug: string;
@@ -22,4 +24,5 @@ export interface IGame {
 	franchises: {
 		name: string;
 	}[];
+	userData: IGameUserData;
 }

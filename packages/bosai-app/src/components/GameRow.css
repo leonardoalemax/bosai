@@ -4,6 +4,7 @@
 	width: 100%;
 	height: 72px;
 	background-color: #fff;
+	color: var(--color-background);
 	border-radius: 8px;
 	padding: 0 2px;
 	margin: 2px 0;
@@ -14,6 +15,10 @@
 	display: flex;
 	flex-direction: row;
 	gap: 8px;
+}
+
+.ant-list-item-action li {
+	list-style: none;
 }
 
 .ant-list-item:hover {

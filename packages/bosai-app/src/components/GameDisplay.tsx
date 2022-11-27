@@ -1,48 +1,56 @@
 import { useContext } from "react";
-import { Select, Divider, Tag, Image, Empty } from "antd";
+import { Image, Empty, Divider } from "antd";
 
 import "./GameDisplay.css";
+import GameDisplayContext from "../context/GameDisplayContext";
+import ConsolesTags from "./ConsolesTags";
+import DevelopersTags from "./DevelopersTags";
+import FranchisesTags from "./FranchiseTags";
+import GameAddToCollection from "./GameAddToCollection";
+import GameActions from "./GameActions";
+import { IGame } from "../interfaces/game";
+import CollectionContext from "../context/CollectionContext";
 import GameContext from "../context/GameContext";
 
 function GameDisplay() {
-	const { game } = useContext(GameContext);
+	const { game } = useContext(GameDisplayContext);
+	const { toggleConsoleToGame } = useContext(CollectionContext);
 
 	return game ? (
-		<div className='game-display'>
-			<Image width={200} src={game?.cover} />
-			<div className='game-meta'>
-				<h1>{game?.title}</h1>
-				<div className='game-meta-row'>
-					<label>franchises:</label>
-					{game?.franchises &&
-						game?.franchises.map(({ name }: { name: string }) => (
-							<Tag color='magenta' key={name}>
-								{name}
-							</Tag>
-						))}
+		<GameContext.Provider value={{ game: game }}>
+			<div className='game-display'>
+				<div className='game-display-header'>
+					<Image width={200} src={game?.cover} />
+					<div className='game-meta'>
+						<h1>{game?.title}</h1>
+						<div className='game-meta-row'>
+							<label>franchises:</label>
+							<FranchisesTags />
+						</div>
+						<div className='game-meta-row'>
+							<label>consoles:</label>
+							<ConsolesTags />
+						</div>
+						<div className='game-meta-row'>
+							<label>developers:</label>
+							<DevelopersTags />
+						</div>
+					</div>
 				</div>
-				<div className='game-meta-row'>
-					<label>consoles:</label>
-					{game?.consoles &&
-						game?.consoles.map((name: string) => (
-							<Tag color='green' key={name}>
-								{name}
-							</Tag>
-						))}
-				</div>
-				<div className='game-meta-row'>
-					<label>developers:</label>
-					{game?.developers &&
-						game?.developers.map(({ company }: any) => (
-							<>
-								<Tag color='blue' key={company.name}>
-									{company.name}
-								</Tag>
-							</>
-						))}
+				<div className='game-display-actions'>
+					<Divider />
+					<GameAddToCollection />
+					<Divider />
+
+					<GameActions
+						prop='consoles'
+						action={(g: IGame, item: string) => {
+							toggleConsoleToGame && toggleConsoleToGame(g, item);
+						}}
+					/>
 				</div>
 			</div>
-		</div>
+		</GameContext.Provider>
 	) : (
 		<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
 	);

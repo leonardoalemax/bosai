@@ -1,13 +1,5 @@
 const parseDate = require("./date");
 
-const platformsMap = {
-	playstation: ["psp", "ps2", "ps3", "ps4", "ps5", "ps4--1", "ps"],
-	nintendo: ["gba", "3ds", "gbc", "nes", "snes", "sfam", "game-and-watch"],
-	microsoft: ["xbox", "xbox360", "xboxone", "series-x", "series-s"],
-	pc: ["win", "linux", "mac"],
-	mobile: ["android", "ios"],
-};
-
 const parseGame = ({
 	name,
 	slug,
@@ -27,7 +19,9 @@ const parseGame = ({
 			  )
 			: [],
 		cover: cover?.url?.replace("t_thumb", "t_cover_big"),
-		developers: involved_companies?.filter((e) => e.developer),
+		developers: involved_companies
+			?.filter((e) => e.developer)
+			.map((d) => d.company.name),
 		...rest,
 	};
 };
